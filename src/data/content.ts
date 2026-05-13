@@ -41,13 +41,13 @@ export type Social = {
 export const socials: Social[] = [
   {
     label: "GitHub",
-    href: "https://github.com/",
-    username: "@jeffery-gaisey",
+    href: "https://github.com/jeffery-kobby-gaisey",
+    username: "@jeffery-kobby-gaisey",
     icon: Github,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/jeffery-gaisey-92b6182b5/",
     username: "Jeffery Kobby Gaisey",
     icon: Linkedin,
   },
@@ -224,7 +224,7 @@ export const projects: Project[] = [
       "Secure authentication & sessions",
     ],
     stack: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
-    github: "https://github.com/",
+    github: "https://github.com/jeffery-kobby-gaisey",
     demo: "#",
   },
   {
@@ -241,7 +241,7 @@ export const projects: Project[] = [
       "Secure session handling",
     ],
     stack: ["PHP", "MySQL", "JavaScript", "Chart.js"],
-    github: "https://github.com/",
+    github: "https://github.com/jeffery-kobby-gaisey",
     demo: "#",
   },
   {
@@ -258,7 +258,7 @@ export const projects: Project[] = [
       "Tamper-detection via HMAC",
     ],
     stack: ["Python", "cryptography", "Tkinter"],
-    github: "https://github.com/",
+    github: "https://github.com/jeffery-kobby-gaisey",
   },
   {
     title: "E-Commerce Website",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
       "Product & category management",
     ],
     stack: ["PHP", "MySQL", "JavaScript", "Tailwind"],
-    github: "https://github.com/",
+    github: "https://github.com/jeffery-kobby-gaisey",
     demo: "#",
   },
   {
@@ -322,7 +322,7 @@ export const projects: Project[] = [
       "Interactive terminal",
     ],
     stack: ["React", "TypeScript", "Tailwind", "Framer Motion"],
-    github: "https://github.com/",
+    github: "https://github.com/jeffery-kobby-gaisey/My-Portfolio",
     demo: "#",
   },
 ];
