@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <path d="M16 18 L32 12 L48 18 V32 C48 42 41 50 32 52 C23 50 16 42 16 32 Z" fill="none" stroke="#2563EB" stroke-width="3" stroke-linejoin="round"/>
+  <text x="32" y="38" text-anchor="middle" font-family="JetBrains Mono, monospace" font-weight="700" font-size="18" fill="#2563EB">JG</text>
+</svg>

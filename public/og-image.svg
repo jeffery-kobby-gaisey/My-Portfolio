@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="0" y="0" width="12" height="630" fill="#3B82F6"/>
+  <text x="80" y="270" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="78" fill="#0F172A">Jeffery Kobby Gaisey</text>
+  <text x="80" y="340" font-family="Space Grotesk, sans-serif" font-weight="500" font-size="38" fill="#2563EB">Cybersecurity Specialist · Full-Stack Developer</text>
+  <text x="80" y="400" font-family="JetBrains Mono, monospace" font-weight="400" font-size="24" fill="#475569">$ ./build --secure --fast --recruiter-ready</text>
+  <g transform="translate(80, 500)">
+    <rect width="220" height="60" rx="12" fill="#2563EB"/>
+    <text x="110" y="38" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="20" fill="#FFFFFF">View Projects →</text>
+  </g>
+  <text x="80" y="595" font-family="JetBrains Mono, monospace" font-size="18" fill="#64748B">Top-5 Global CTF · HackTheBox · TryHackMe · Accra, Ghana</text>
+</svg>

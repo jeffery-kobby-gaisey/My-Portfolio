@@ -1,0 +1,2 @@
+Replace this file with your real PDF resume named `Jeffery-Kobby-Gaisey-CV.pdf`.
+The Hero "Download CV" button links to /Jeffery-Kobby-Gaisey-CV.pdf.

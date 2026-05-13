@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #F8FAFC;
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+::selection {
+  background: #BFDBFE;
+  color: #1E3A8A;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-slate-200 bg-white;
+    box-shadow:
+      0 1px 2px 0 rgba(15, 23, 42, 0.04),
+      0 8px 28px -10px rgba(15, 23, 42, 0.08);
+  }
+
+  .surface-muted {
+    @apply rounded-2xl border border-slate-200 bg-slate-50;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/20 disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 hover:shadow-[0_8px_24px_-6px_rgba(37,99,235,0.45)];
+  }
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-slate-800 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700;
+  }
+  .btn-ghost {
+    @apply btn text-slate-700 hover:bg-slate-100 hover:text-slate-900;
+  }
+  .btn-icon {
+    @apply inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/20 disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:bg-white disabled:hover:text-slate-700;
+  }
+
+  .section {
+    @apply relative scroll-mt-24 py-24 sm:py-28;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 font-mono text-xs uppercase tracking-[0.18em] text-brand-700;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-slate-200;
+  }
+
+  .terminal {
+    @apply rounded-2xl border border-slate-900/10 bg-slate-900 font-mono text-sm shadow-card;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
