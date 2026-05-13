@@ -10,3 +10,11 @@ dist-ssr
 .idea
 .vscode
 *.log
+
+# TypeScript incremental + compiled vite.config
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Vercel
+.vercel
