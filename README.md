@@ -1,8 +1,8 @@
 # Jeffery Kobby Gaisey — Portfolio
 
-A production-ready, dark-by-default portfolio for **Jeffery Kobby Gaisey** — cybersecurity undergraduate, full-stack developer and Top-5 global CTF finisher.
+A production-ready, light-themed portfolio for **Jeffery Kobby Gaisey** — cybersecurity undergraduate, full-stack developer and Top-5 global CTF finisher.
 
-Built with **React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion + Lucide React**. Glassmorphism UI, animated grid background, scroll progress, light/dark theme toggle, project filtering, and an interactive in-browser terminal.
+Built with **React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion + Lucide React**. Electric-blue accent palette, animated grid background, scroll progress, filterable project carousel, skills carousel, and an interactive in-browser terminal.
 
 ---
 
