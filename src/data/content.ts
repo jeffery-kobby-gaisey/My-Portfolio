@@ -179,6 +179,38 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "SlideAI — AI Presentation Generator",
+    category: "Full-Stack",
+    tagline: "Turn a prompt into a polished, themed slide deck in seconds.",
+    description:
+      "A live full-stack web app that generates fully designed presentations from a single prompt. The React front-end streams LLM responses, structures them into slides, and renders themed templates in real time.",
+    features: [
+      "Prompt → slide deck generation",
+      "Streamed LLM responses",
+      "Themed slide templates",
+      "Export & share decks",
+      "Authentication & session handling",
+    ],
+    stack: ["React", "Node.js", "Express", "OpenAI API", "Tailwind CSS"],
+    demo: "https://www.slideai.site/",
+  },
+  {
+    title: "CampusMart GH",
+    category: "Full-Stack",
+    tagline: "Live student e-commerce marketplace for Ghanaian campuses.",
+    description:
+      "A production multi-vendor e-commerce platform connecting students, sellers and shoppers across Ghanaian campuses. Ships product listings, cart and checkout flows, vendor dashboards and secure authentication end-to-end.",
+    features: [
+      "Multi-vendor product listings",
+      "Cart, checkout & order tracking",
+      "Search & category filtering",
+      "Vendor dashboard",
+      "Secure authentication",
+    ],
+    stack: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
+    demo: "https://www.campusmartgh.com/web/shop",
+  },
+  {
     title: "School Canteen POS System",
     category: "Full-Stack",
     tagline: "Production POS handling daily orders, inventory and access roles.",
@@ -246,19 +278,36 @@ export const projects: Project[] = [
     demo: "#",
   },
   {
-    title: "Bella Africa Business Website",
+    title: "Bella Africa NGO",
     category: "Web",
-    tagline: "Marketing site with CMS integration and CRM hooks.",
+    tagline: "Live marketing & programs site for an Accra-based NGO.",
     description:
-      "Responsive marketing website with a custom CMS, optimized performance, and analytics integration. Built and maintained for an Accra-based NGO.",
+      "Responsive marketing website I built and maintain for Bella Africa — a non-profit operating out of Accra. Covers programs, impact stories, donation calls-to-action and contact flows, with a focus on speed and accessibility.",
     features: [
       "Responsive design",
-      "Custom CMS integration",
-      "Performance optimization",
-      "Analytics & SEO",
+      "Custom content management",
+      "Performance & SEO optimization",
+      "Donation & contact CTAs",
+      "Analytics integration",
     ],
     stack: ["HTML", "CSS", "JavaScript", "PHP"],
-    demo: "#",
+    demo: "https://bellafrica.org/",
+  },
+  {
+    title: "Savanet Ghana — NGO Website",
+    category: "Web",
+    tagline: "Programs and impact site for a Ghanaian non-profit.",
+    description:
+      "Live marketing site for Savanet Ghana — programs, impact stories, leadership and contact flows. Built for fast mobile loads and accessible content on slower connections.",
+    features: [
+      "Responsive, mobile-first layouts",
+      "Programs & impact sections",
+      "Contact & enquiry forms",
+      "SEO-friendly markup",
+      "Accessible content structure",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "PHP"],
+    demo: "https://www.savanet-gh.org/",
   },
   {
     title: "Personal Portfolio Website",
