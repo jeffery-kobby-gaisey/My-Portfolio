@@ -1,5 +1,11 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
+import { motion, useMotionValue, useAnimationControls, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +24,9 @@ type Props = {
   ariaLabel?: string;
 };
 
+const SWIPE_OFFSET_THRESHOLD = 60;
+const SWIPE_VELOCITY_THRESHOLD = 400;
+
 function resolvePerView(bp: Breakpoints, width: number) {
   if (width >= 1280 && bp.xl !== undefined) return bp.xl;
   if (width >= 1024 && bp.lg !== undefined) return bp.lg;
@@ -35,11 +44,18 @@ export default function Carousel({
   const total = children.length;
   const [perView, setPerView] = useState<number>(itemsPerView.base);
   const [page, setPage] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const controls = useAnimationControls();
 
+  // Resolve responsive perView + track viewport width for drag math
   useEffect(() => {
     function update() {
-      const w = typeof window === "undefined" ? 0 : window.innerWidth;
-      setPerView(resolvePerView(itemsPerView, w));
+      const el = viewportRef.current;
+      const winW = typeof window === "undefined" ? 0 : window.innerWidth;
+      setPerView(resolvePerView(itemsPerView, winW));
+      if (el) setViewportWidth(el.clientWidth);
     }
     update();
     window.addEventListener("resize", update);
@@ -52,15 +68,62 @@ export default function Carousel({
     if (page > pages - 1) setPage(pages - 1);
   }, [pages, page]);
 
-  const slideWidth = 100 / perView;
-  const translateX = -(page * perView * slideWidth);
+  // Animate the track whenever page or viewportWidth changes
+  useEffect(() => {
+    const target = -(page * viewportWidth);
+    controls.start({
+      x: target,
+      transition: { type: "spring", stiffness: 220, damping: 30, mass: 0.6 },
+    });
+  }, [page, viewportWidth, controls]);
 
+  function goTo(p: number) {
+    setPage(Math.max(0, Math.min(pages - 1, p)));
+  }
   function prev() {
-    setPage((p) => Math.max(0, p - 1));
+    goTo(page - 1);
   }
   function next() {
-    setPage((p) => Math.min(pages - 1, p + 1));
+    goTo(page + 1);
   }
+
+  function onDragEnd(_: unknown, info: PanInfo) {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+    const swipedLeft =
+      offset < -SWIPE_OFFSET_THRESHOLD || velocity < -SWIPE_VELOCITY_THRESHOLD;
+    const swipedRight =
+      offset > SWIPE_OFFSET_THRESHOLD || velocity > SWIPE_VELOCITY_THRESHOLD;
+    if (swipedLeft) next();
+    else if (swipedRight) prev();
+    else {
+      // Snap back to current page
+      controls.start({
+        x: -(page * viewportWidth),
+        transition: { type: "spring", stiffness: 260, damping: 32 },
+      });
+    }
+  }
+
+  function onKey(e: KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      prev();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      next();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      goTo(pages - 1);
+    }
+  }
+
+  const slideWidth = 100 / perView;
+  const maxX = 0;
+  const minX = -((pages - 1) * viewportWidth);
 
   return (
     <div
@@ -68,12 +131,22 @@ export default function Carousel({
       role="region"
       aria-roledescription="carousel"
       aria-label={ariaLabel}
+      tabIndex={0}
+      onKeyDown={onKey}
     >
-      <div className="overflow-hidden">
+      <div
+        ref={viewportRef}
+        className="overflow-hidden touch-pan-y select-none"
+      >
         <motion.div
-          animate={{ x: `${translateX}%` }}
-          transition={{ type: "spring", stiffness: 220, damping: 30, mass: 0.6 }}
-          className="flex"
+          className="flex cursor-grab active:cursor-grabbing"
+          style={{ x }}
+          animate={controls}
+          drag="x"
+          dragConstraints={{ left: minX, right: maxX }}
+          dragElastic={0.12}
+          dragMomentum={false}
+          onDragEnd={onDragEnd}
         >
           {children.map((child, i) => (
             <div
@@ -83,7 +156,8 @@ export default function Carousel({
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${total}`}
             >
-              {child}
+              {/* Prevent in-card clicks from being interpreted as drags */}
+              <div className="pointer-events-auto">{child}</div>
             </div>
           ))}
         </motion.div>
@@ -108,7 +182,7 @@ export default function Carousel({
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setPage(i)}
+                  onClick={() => goTo(i)}
                   role="tab"
                   aria-selected={active}
                   aria-label={`Go to slide ${i + 1}`}
