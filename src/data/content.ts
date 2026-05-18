@@ -211,6 +211,24 @@ export const projects: Project[] = [
     demo: "https://www.campusmartgh.com/web/shop",
   },
   {
+    title: "SmartSchool GH — School Management System",
+    category: "Full-Stack",
+    tagline: "All-in-one school management platform for Ghanaian institutions.",
+    description:
+      "A production school management system built for Ghanaian schools. Handles student records, attendance tracking, grade management, class scheduling and an admin dashboard — all behind secure, role-based authentication.",
+    features: [
+      "Student records & enrollment",
+      "Attendance tracking",
+      "Grade & results management",
+      "Class scheduling",
+      "Role-based admin dashboard",
+      "Secure authentication & sessions",
+    ],
+    stack: ["PHP", "MySQL", "React", "Tailwind CSS"],
+    github: "https://github.com/jeffery-kobby-gaisey",
+    demo: "https://smartschoolgh.com/",
+  },
+  {
     title: "School Canteen POS System",
     category: "Full-Stack",
     tagline: "Production POS handling daily orders, inventory and access roles.",
