@@ -118,14 +118,39 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Terminal card (intentionally dark — it's a terminal) */}
+          {/* RIGHT — Profile photo + Terminal card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative"
+            className="relative flex flex-col items-center gap-6"
           >
-            <div className="surface overflow-hidden p-0">
+            {/* Profile photo */}
+            <div className="relative mt-2 inline-flex pb-3">
+              <div className="h-44 w-44 rounded-full bg-gradient-to-br from-brand-400 via-cyan-400 to-brand-600 p-[3px] shadow-xl shadow-brand-200/60">
+                <div className="h-full w-full overflow-hidden rounded-full">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="Jeffery Kobby Gaisey"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              {/* Available badge */}
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                <div className="flex items-center gap-1.5 rounded-full border border-brand-200 bg-white px-3 py-1 shadow-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
+                  </span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-slate-700">
+                    Available
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="surface w-full overflow-hidden p-0">
               <div className="terminal m-0 rounded-2xl border-0 p-5">
                 {/* terminal header */}
                 <div className="flex items-center justify-between">
